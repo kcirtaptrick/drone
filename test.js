@@ -32,6 +32,7 @@ io.on('connection', function(socket){
         console.log('Key: ' + e.key);
         switch (e.key) {
             case " ":
+                console.log('Space');
                 for(let motor of drone.motor) {
                     motor.pwm = 1000;
                 }
