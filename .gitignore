@@ -63,3 +63,4 @@ typings/
 # misc
 .*.swp
 *.js.save*
+.history/

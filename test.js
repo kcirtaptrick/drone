@@ -27,6 +27,7 @@ io.on('connection', function(socket){
     });
     
     socket.on('keydown', (e) => {
+        console.log('Key: ' + e.key);
         switch (e.key) {
             case "ArrowUp":
                 changeMotors([-10, -10, 10, 10]);
