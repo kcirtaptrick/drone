@@ -27,6 +27,7 @@ io.on('connection', function(socket){
     });
     
     socket.on('keydown', (e) => {
+        console.log('e: ' + e);
         console.log('Key: ' + e.key);
         switch (e.key) {
             case "ArrowUp":
