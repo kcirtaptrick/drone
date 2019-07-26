@@ -19,6 +19,9 @@ for(let i in pins) {
         pwm: 1000
     });
 }
+for(let motor of drone.motor) {
+    motor.pin.servoWrite(1000);
+}
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.emit('armed', drone.armed);
@@ -33,8 +36,8 @@ io.on('connection', function(socket){
         switch (e.key) {
             case " ":
                 console.log('Space');
-                for(let motor of drone.motor) {
-                    motor.pwm = 1000;
+                for(let i in drone.motor) {
+                    drone.motor[i].pwm = 1000;
                 }
             case "ArrowUp":
                 changeMotors([-10, -10, 10, 10]);
