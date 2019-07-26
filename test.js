@@ -52,7 +52,7 @@ io.on('connection', function(socket){
             case "a":
                 changeMotors([-10, 10, -10, 10]);
                 break;
-            case "s":
+            case "d":
                 changeMotors([10, -10, 10, -10]);
                 break;
         }
