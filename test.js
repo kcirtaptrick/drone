@@ -59,7 +59,7 @@ io.on('connection', function(socket){
         for(let motor of drone.motor) {
             motor.pin.servoWrite(motor.pwm = motor.pwm < 2000 ? motor.pwm > 1000 ? motor.pwm : 1000 : 2000);
         }
-        for(let i of drone.motor) {
+        for(let i in drone.motor) {
             console.log(`Motor ${i}: ${drone.motor[i].pwm}`);
         }
         function changeMotors(values) {
