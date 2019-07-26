@@ -1,6 +1,10 @@
 doctype html
 head
-  meta(charset='UTF-8')
-  title Control
-  script(type='text/javascript' src='/socket.io.js')
-  script(type='text/javascript' src='/calibrate.js')
+    meta(charset='UTF-8')
+    title Control
+    script(type='text/javascript' src='/socket.io.js')
+    script(type='text/javascript' src='/calibrate.js')
+body
+    - for(let i = 0; i < 4; i++)
+        input(type='text', placeholder='Motor' + i)
+    button(onclick='setMotors()') Set Motors

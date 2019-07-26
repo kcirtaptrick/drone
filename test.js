@@ -19,6 +19,16 @@ for(let i in pins) {
         pwm: 1000
     });
 }
+drone.updateMotors = () => {
+    for(let motor of drone.motor) {
+        motor.pin.servoWrite(motor.pwm = motor.pwm < 2000 ? motor.pwm > 1000 ? motor.pwm : 1000 : 2000);
+    }
+}
+drone.printMotors = () => {
+    for(let i in drone.motor) {
+        console.log(`Motor ${i}: ${drone.motor[i].pwm}`);
+    }
+}
 for(let motor of drone.motor) {
     motor.pin.servoWrite(1000);
 }
@@ -29,6 +39,17 @@ io.on('connection', function(socket){
         console.log('user disconnected');
     });
     
+    socket.on('setMotors', (values) => {
+        console.log('Values: ');
+        console.log(values);
+        for(let i in values) {
+            drone.motors[i].pwm = values[i];
+        }
+        drone.updateMotors();
+        drone.printMotors();
+        
+    });
+
     var multiplier = 10;
     socket.on('keydown', (e) => {
         console.log('Key: ' + e.key);
@@ -68,12 +89,8 @@ io.on('connection', function(socket){
             multiplier = e.key == "0" ? 10 : Number(e.key);
             console.log('Multiplier: ' + multiplier);
         }
-        for(let motor of drone.motor) {
-            motor.pin.servoWrite(motor.pwm = motor.pwm < 2000 ? motor.pwm > 1000 ? motor.pwm : 1000 : 2000);
-        }
-        for(let i in drone.motor) {
-            console.log(`Motor ${i}: ${drone.motor[i].pwm}`);
-        }
+        drone.updateMotors();
+        drone.printMotors();
         function changeMotors(values) {
             for(let i in values) {
                 drone.motor[i].pwm += values[i] * multiplier;

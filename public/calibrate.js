@@ -6,3 +6,6 @@ document.addEventListener('keydown', (e) => {
     socket.emit('keydown', {key: e.key});
     console.log(e);
 });
+function setMotors() {
+    socket.emit('setMotors', document.querySelectorAll('input').map(x => x.value))
+}
