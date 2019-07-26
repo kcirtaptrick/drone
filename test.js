@@ -45,10 +45,10 @@ io.on('connection', function(socket){
             case "ArrowDown":
                 changeMotors([10, 10, -10, -10]);
                 break;
-            case "ArrowRight":
+            case "ArrowLeft":
                 changeMotors([10, -10, -10, 10]);
                 break;
-            case "ArrowLeft":
+            case "ArrowRight":
                 changeMotors([-10, 10, 10, -10]);
                 break;
             case "w":
@@ -57,10 +57,10 @@ io.on('connection', function(socket){
             case "s":
                 changeMotors([-10, -10, -10, -10]);
                 break;
-            case "a":
+            case "d":
                 changeMotors([-10, 10, -10, 10]);
                 break;
-            case "d":
+            case "a":
                 changeMotors([10, -10, 10, -10]);
                 break;
         }
