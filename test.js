@@ -30,8 +30,7 @@ io.on('connection', function(socket){
     });
     
     socket.on('keydown', (e) => {
-        console.log('e: ');
-        console.log(e)
+        var multiplier = 10;
         console.log('Key: ' + e.key);
         switch (e.key) {
             case " ":
@@ -39,30 +38,35 @@ io.on('connection', function(socket){
                 for(let i in drone.motor) {
                     drone.motor[i].pwm = 1000;
                 }
+                break;
             case "ArrowUp":
-                changeMotors([-10, -10, 10, 10]);
+                changeMotors([-1, -1, 1, 1]);
                 break;
             case "ArrowDown":
-                changeMotors([10, 10, -10, -10]);
+                changeMotors([1, 1, -1, -1]);
                 break;
             case "ArrowLeft":
-                changeMotors([10, -10, -10, 10]);
+                changeMotors([1, -1, -1, 1]);
                 break;
             case "ArrowRight":
-                changeMotors([-10, 10, 10, -10]);
+                changeMotors([-1, 1, 1, -1]);
                 break;
             case "w":
-                changeMotors([10, 10, 10, 10]);
+                changeMotors([1, 1, 1, 1]);
                 break;
             case "s":
-                changeMotors([-10, -10, -10, -10]);
+                changeMotors([-1, -1, -1, -1]);
                 break;
             case "d":
-                changeMotors([-10, 10, -10, 10]);
+                changeMotors([-1, 1, -1, 1]);
                 break;
             case "a":
-                changeMotors([10, -10, 10, -10]);
+                changeMotors([1, -1, 1, -1]);
                 break;
+        }
+        if(!isNaN(e.key)) {
+            multiplier = e.key == "0" ? 10 : Number(e.key);
+            console.log('Multiplier: ' + multiplier);
         }
         for(let motor of drone.motor) {
             motor.pin.servoWrite(motor.pwm = motor.pwm < 2000 ? motor.pwm > 1000 ? motor.pwm : 1000 : 2000);
@@ -72,7 +76,7 @@ io.on('connection', function(socket){
         }
         function changeMotors(values) {
             for(let i in values) {
-                drone.motor[i].pwm += values[i];
+                drone.motor[i].pwm += values[i] * multiplier;
             }
         }
     });
