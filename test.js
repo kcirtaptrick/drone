@@ -60,8 +60,8 @@ io.on('connection', function(socket){
     socket.on('keydown', (e) => {
         console.log('Key: ' + e.key);
         switch (e.key) {
-            case " ":
-                console.log('Space');
+            case "x":
+                console.log("Killed");
                 for(let i in drone.motor) {
                     drone.motor[i].pwm = 1000;
                 }
