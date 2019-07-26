@@ -118,10 +118,8 @@ app.get('/', (req, res) => {
         title: 'Control'
     });
 });
-app.get('/calibrate', (req, res) => {
-    res.render('calibrate', {
-        title: 'Calibrate'
-    });
+app.get('calibrate', (req, res) => {
+    res.render('c')
 });
 
 const server = http.listen(7000, () => {

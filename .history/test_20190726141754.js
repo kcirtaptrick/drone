@@ -118,7 +118,7 @@ app.get('/', (req, res) => {
         title: 'Control'
     });
 });
-app.get('/calibrate', (req, res) => {
+app.get('calibrate', (req, res) => {
     res.render('calibrate', {
         title: 'Calibrate'
     });

@@ -118,11 +118,6 @@ app.get('/', (req, res) => {
         title: 'Control'
     });
 });
-app.get('/calibrate', (req, res) => {
-    res.render('calibrate', {
-        title: 'Calibrate'
-    });
-});
 
 const server = http.listen(7000, () => {
     console.log(`Express running → PORT ${server.address().port}`);
