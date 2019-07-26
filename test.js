@@ -29,8 +29,8 @@ io.on('connection', function(socket){
         console.log('user disconnected');
     });
     
+    var multiplier = 10;
     socket.on('keydown', (e) => {
-        var multiplier = 10;
         console.log('Key: ' + e.key);
         switch (e.key) {
             case " ":
