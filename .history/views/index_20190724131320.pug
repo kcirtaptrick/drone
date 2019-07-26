@@ -1,0 +1,54 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title Control
+  link(rel='stylesheet' type='text/css' href='gpcon.css')
+  script(type='text/javascript' src='socket.io.js')
+  script(type='text/javascript' src='libhtml.js')
+  script(type='text/javascript' src='libgp.js')
+  script(type='text/javascript' src='gpcon.js')
+#sol.nodisp
+  | Gamepads are not supported on this browser
+#prompt.nodisp
+  | Attach a gamepad or press a gamepad
+  | button
+#main.nodisp
+  #button-bar
+    span.button-bar-title Gamepad: 
+    span#button-bar-box
+    select#sele
+  #mode-select-box
+    | Mode
+    select#mode-select
+      option(selected='selected' value='raw') Raw
+      option(value='clamp') Clamped
+  #deadzone-box
+    | Deadzone
+    input#deadzone(type='checkbox')
+  hr
+  #gamepad-container
+// Templates are copied for use when needed
+#templates
+  input#template-button.selector-button(type='button')
+  #template-gamepad.gamepad.nodisp
+    .gamepad-title
+    | &#x9;&#x9;&#x9;(
+    .gamepad-mapping
+    | )
+    .gamepad-id
+    .gamepad-controls-center
+      .gamepad-controls
+        .gamepad-buttons-box
+        .gamepad-axes-box
+  #template-gamepad-button-container.gamepad-button-container
+    .gamepad-button
+    .gamepad-button-label
+  #template-gamepad-axis-pair-container.gamepad-axis-pair-container
+    .gamepad-axis-pair
+      .gamepad-circle.nodisp
+      .gamepad-axis-pip
+      .gamepad-axis-crosshair
+        .gamepad-axis-crosshair-v
+        .gamepad-axis-crosshair-h
+    .gamepad-axis-pair-label
+    .gamepad-axis-pair-value
