@@ -7,5 +7,5 @@ document.addEventListener('keydown', (e) => {
     console.log(e);
 });
 function setMotors() {
-    socket.emit('setMotors', document.querySelectorAll('input').map(x => x.value))
+    socket.emit('setMotors', Array.from(document.querySelectorAll('input')).map(x => Number(x.value)));
 }
